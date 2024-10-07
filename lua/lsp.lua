@@ -10,4 +10,5 @@ lspconfig.groovyls.setup{}
 vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.groovy lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.yaml lua vim.lsp.buf.format()]]
-
+vim.cmd [[autocmd BufWritePre *.python lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre *.lua lua vim.lsp.buf.format()]]
