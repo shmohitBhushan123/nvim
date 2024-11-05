@@ -21,4 +21,4 @@ When adding this repository to your path, make sure you have these files in this
 `/Users/<USERNAME>/.config`
 
 ## Running Packer
-After running `vi` and opening neovim, run `:PackerInstall` to install all plugins or `PackerUpdate` if plugins are due for an update
+After running `vi` and opening neovim, run `:PackerSync` to install all plugins or `PackerUpdate` if plugins are due for an update
