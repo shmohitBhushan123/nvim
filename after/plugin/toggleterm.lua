@@ -7,3 +7,6 @@ require("toggleterm").setup({
   },
   open_mapping = [[<leader>tm]],
 })
+
+-- Add escape key mapping to close toggleterm
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>:ToggleTerm<CR>]], { noremap = true, silent = true })
