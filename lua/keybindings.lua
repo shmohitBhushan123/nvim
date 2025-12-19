@@ -21,10 +21,6 @@ vim.api.nvim_set_keymap('n', '<leader>w', '<C-w>w', { noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<leader>lg', ':LazyGit<CR>', { noremap = true, silent = true })
 -- exit lazygit via 'q'
 
--- debuger keybinding to connect/disconnect
-vim.api.nvim_set_keymap("n", "<leader>da", ":lua require('dapui').toggle()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>de", ":lua require('dap').terminate(); require('dapui').close()<CR>",
-  { noremap = true, silent = true })
 -- spacing keybinding
 vim.opt.expandtab = true
 vim.opt.tabstop = 2

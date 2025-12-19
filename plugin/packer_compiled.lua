@@ -75,6 +75,7 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["Comment.nvim"] = {
+    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0" },
     loaded = true,
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
@@ -88,6 +89,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/accelerated-jk.nvim",
     url = "https://github.com/rainbowhxch/accelerated-jk.nvim"
+  },
+  ["black-metal-theme-neovim"] = {
+    config = { "\27LJ\2\nh\0\0\3\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\4\0B\0\1\1K\0\1\0\tload\1\0\1\ntheme\rimmortal\nsetup\16black-metal\frequire\0" },
+    loaded = true,
+    path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/black-metal-theme-neovim",
+    url = "https://github.com/metalelf0/black-metal-theme-neovim"
   },
   ["bufferline.nvim"] = {
     loaded = true,
@@ -135,6 +142,7 @@ _G.packer_plugins = {
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["goto-preview"] = {
+    config = { "\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17goto-preview\frequire\0" },
     loaded = true,
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/goto-preview",
     url = "https://github.com/rmagatti/goto-preview"
@@ -150,6 +158,7 @@ _G.packer_plugins = {
     url = "https://github.com/kdheepak/lazygit.nvim"
   },
   ["local-highlight.nvim"] = {
+    config = { "\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20local-highlight\frequire\0" },
     loaded = true,
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/local-highlight.nvim",
     url = "https://github.com/tzachar/local-highlight.nvim"
@@ -179,20 +188,25 @@ _G.packer_plugins = {
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["mcphub.nvim"] = {
+    loaded = true,
+    path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/mcphub.nvim",
+    url = "https://github.com/ravitemer/mcphub.nvim"
+  },
   ["monokai-pro.nvim"] = {
     loaded = true,
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/monokai-pro.nvim",
     url = "https://github.com/loctvl842/monokai-pro.nvim"
   },
-  neovim = {
-    loaded = true,
-    path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/neovim",
-    url = "https://github.com/rose-pine/neovim"
-  },
   ["noice.nvim"] = {
     loaded = true,
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/noice.nvim",
     url = "https://github.com/folke/noice.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   nvim = {
     loaded = true,
@@ -204,20 +218,20 @@ _G.packer_plugins = {
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
-  ["nvim-dap-go"] = {
-    loaded = true,
-    path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/nvim-dap-go",
-    url = "https://github.com/leoluz/nvim-dap-go"
-  },
-  ["nvim-dap-ui"] = {
-    loaded = true,
-    path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
-    url = "https://github.com/rcarriga/nvim-dap-ui"
-  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-nio"] = {
+    loaded = true,
+    path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/nvim-nio",
+    url = "https://github.com/nvim-neotest/nvim-nio"
+  },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -244,6 +258,11 @@ _G.packer_plugins = {
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["rose-pine"] = {
+    loaded = true,
+    path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/rose-pine",
+    url = "https://github.com/rose-pine/neovim"
+  },
   ["snacks.nvim"] = {
     loaded = true,
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/snacks.nvim",
@@ -267,6 +286,22 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
+time([[Config for Comment.nvim]], false)
+-- Config for: goto-preview
+time([[Config for goto-preview]], true)
+try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17goto-preview\frequire\0", "config", "goto-preview")
+time([[Config for goto-preview]], false)
+-- Config for: local-highlight.nvim
+time([[Config for local-highlight.nvim]], true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20local-highlight\frequire\0", "config", "local-highlight.nvim")
+time([[Config for local-highlight.nvim]], false)
+-- Config for: black-metal-theme-neovim
+time([[Config for black-metal-theme-neovim]], true)
+try_loadstring("\27LJ\2\nh\0\0\3\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\4\0B\0\1\1K\0\1\0\tload\1\0\1\ntheme\rimmortal\nsetup\16black-metal\frequire\0", "config", "black-metal-theme-neovim")
+time([[Config for black-metal-theme-neovim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

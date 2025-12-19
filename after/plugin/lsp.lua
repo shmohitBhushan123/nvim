@@ -130,7 +130,7 @@ vim.cmd [[autocmd BufWritePre *.js lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.yaml lua vim.lsp.buf.format()]]
 -- Disable virtual_text since it's redundant due to lsp_lines.
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
 })
 -- cmp setup
 local cmp = require('cmp')

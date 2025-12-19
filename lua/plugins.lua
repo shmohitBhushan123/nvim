@@ -43,33 +43,30 @@ require('packer').startup(function()
     }
   }
 
+  -- Noice with proper dependencies
   use {
-    'folke/snacks.nvim',
-    'rcarriga/nvim-dap-ui',
-    'leoluz/nvim-dap-go',
-    'rose-pine/neovim', as = 'rose-pine',
-    'numToStr/Comment.nvim',
-    'nvim-lualine/lualine.nvim',
-    'kdheepak/lazygit.nvim',
-    'rmagatti/goto-preview',
     'folke/noice.nvim',
-    'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-    'loctvl842/monokai-pro.nvim',
-    'olimorris/codecompanion.nvim',
+    requires = {
+      'MunifTanjim/nui.nvim',
+      'rcarriga/nvim-notify',
+    }
+  }
+
+  -- Other plugins
+  use 'folke/snacks.nvim'
+  use { 'rose-pine/neovim', as = 'rose-pine' }
+  use 'kdheepak/lazygit.nvim'
+  use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
+  use 'loctvl842/monokai-pro.nvim'
+  use 'olimorris/codecompanion.nvim'
+  use {
     "tzachar/local-highlight.nvim",
     config = function()
       require('local-highlight').setup()
-    end,
-    requires = {
-      "mfussenegger/nvim-dap",
-      "nvim-neotest/nvim-nio",
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "ravitemer/mcphub.nvim"
-    }
+    end
   }
+  use 'nvim-neotest/nvim-nio'
+  use 'ravitemer/mcphub.nvim'
 
   use {
     'numToStr/Comment.nvim',
@@ -109,5 +106,14 @@ require('packer').startup(function()
       "nvim-treesitter/nvim-treesitter",
       "ravitemer/mcphub.nvim"
     }
+  })
+  use({
+    "metalelf0/black-metal-theme-neovim",
+    config = function()
+      require("black-metal").setup {
+        theme = "immortal", -- Use the Immortal theme variant
+      }
+      require("black-metal").load()
+    end,
   })
 end)

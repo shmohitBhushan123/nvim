@@ -1,14 +1,5 @@
 require("codecompanion").setup({
-  extensions = {
-    mcphub = {
-      callback = "mcphub.extensions.codecompanion",
-      opts = {
-        make_vars = true,
-        make_slash_commands = true,
-        show_result_in_chat = true
-      }
-    }
-  }
+  -- Removed mcphub extension - install mcphub if needed
 })
 vim.keymap.set("n", "<leader>cc", function()
   vim.cmd("CodeCompanionChat")
