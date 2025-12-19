@@ -21,6 +21,10 @@ vim.api.nvim_set_keymap('n', '<leader>w', '<C-w>w', { noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<leader>lg', ':LazyGit<CR>', { noremap = true, silent = true })
 -- exit lazygit via 'q'
 
+-- toggleterm keybinding to open/close terminal
+vim.api.nvim_set_keymap('n', '<leader>tm', ':ToggleTerm<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<leader>tm', '<C-\\><C-n>:ToggleTerm<CR>', { noremap = true, silent = true })
+
 -- spacing keybinding
 vim.opt.expandtab = true
 vim.opt.tabstop = 2

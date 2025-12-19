@@ -56,6 +56,7 @@ require('packer').startup(function()
   use 'folke/snacks.nvim'
   use { 'rose-pine/neovim', as = 'rose-pine' }
   use 'kdheepak/lazygit.nvim'
+  use { 'akinsho/toggleterm.nvim', tag = '*' }
   use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
   use 'loctvl842/monokai-pro.nvim'
   use 'olimorris/codecompanion.nvim'
@@ -106,16 +107,6 @@ require('packer').startup(function()
       "nvim-treesitter/nvim-treesitter",
       "ravitemer/mcphub.nvim"
     }
-  })
-  use({
-    "metalelf0/black-metal-theme-neovim",
-    -- Commented out to try xcode theme
-    -- config = function()
-    --   require("black-metal").setup {
-    --     theme = "immortal", -- Use the Immortal theme variant
-    --   }
-    --   require("black-metal").load()
-    -- end,
   })
   use({
     "arzg/vim-colors-xcode",
