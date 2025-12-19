@@ -91,7 +91,6 @@ _G.packer_plugins = {
     url = "https://github.com/rainbowhxch/accelerated-jk.nvim"
   },
   ["black-metal-theme-neovim"] = {
-    config = { "\27LJ\2\nh\0\0\3\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\4\0B\0\1\1K\0\1\0\tload\1\0\1\ntheme\rimmortal\nsetup\16black-metal\frequire\0" },
     loaded = true,
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/black-metal-theme-neovim",
     url = "https://github.com/metalelf0/black-metal-theme-neovim"
@@ -278,6 +277,11 @@ _G.packer_plugins = {
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-colors-xcode"] = {
+    loaded = true,
+    path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/vim-colors-xcode",
+    url = "https://github.com/arzg/vim-colors-xcode"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/mbhusha1/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -298,10 +302,6 @@ time([[Config for goto-preview]], false)
 time([[Config for local-highlight.nvim]], true)
 try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20local-highlight\frequire\0", "config", "local-highlight.nvim")
 time([[Config for local-highlight.nvim]], false)
--- Config for: black-metal-theme-neovim
-time([[Config for black-metal-theme-neovim]], true)
-try_loadstring("\27LJ\2\nh\0\0\3\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\4\0B\0\1\1K\0\1\0\tload\1\0\1\ntheme\rimmortal\nsetup\16black-metal\frequire\0", "config", "black-metal-theme-neovim")
-time([[Config for black-metal-theme-neovim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

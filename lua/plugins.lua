@@ -109,11 +109,15 @@ require('packer').startup(function()
   })
   use({
     "metalelf0/black-metal-theme-neovim",
-    config = function()
-      require("black-metal").setup {
-        theme = "immortal", -- Use the Immortal theme variant
-      }
-      require("black-metal").load()
-    end,
+    -- Commented out to try xcode theme
+    -- config = function()
+    --   require("black-metal").setup {
+    --     theme = "immortal", -- Use the Immortal theme variant
+    --   }
+    --   require("black-metal").load()
+    -- end,
+  })
+  use({
+    "arzg/vim-colors-xcode",
   })
 end)

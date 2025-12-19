@@ -4,8 +4,7 @@ vim.opt.tabstop = 4               -- Set tab width to 4 spaces
 vim.opt.shiftwidth = 4            -- Set indent width to 4 spaces
 vim.opt.expandtab = true          -- Convert tabs to spaces
 vim.cmd('syntax on')              -- Enable syntax highlighting
--- Colorscheme is loaded in plugins.lua via black-metal plugin
--- vim.cmd.colorscheme "rose-pine"  -- Set colorscheme
+vim.cmd.colorscheme "xcodedarkhc"  -- Set Xcode Dark HC colorscheme
 vim.opt.hlsearch = false          -- prevents from search staying after being done
 vim.opt.incsearch = true          -- search as you type
 -- show spaces
