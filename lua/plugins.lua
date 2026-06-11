@@ -85,6 +85,10 @@ require('packer').startup(function()
       require('goto-preview').setup {}
     end
   }
+  use {
+    'nvimtools/none-ls.nvim',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
   use({
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function()

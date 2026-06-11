@@ -1,11 +1,17 @@
--- local lsp = require('lsp-zero')
-
 -- luacheck globals vim
--- local vim = require('vim')
-local lspconfig = require('lspconfig')
+local ok_lspconfig, lspconfig = pcall(require, 'lspconfig')
+if not ok_lspconfig then
+  return
+end
 require("mason").setup()
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local util = require('lspconfig/util')
+local jdtls_lombok_path = vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar"
+local jdtls_cmd = { "jdtls" }
+if vim.fn.filereadable(jdtls_lombok_path) == 1 then
+  table.insert(jdtls_cmd, "--jvm-arg=-javaagent:" .. jdtls_lombok_path)
+  table.insert(jdtls_cmd, "--jvm-arg=-Xbootclasspath/a:" .. jdtls_lombok_path)
+end
 local function on_attach(client, bufnr)
   -- Enable LSP-based keybindings and options for the current buffer
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -28,7 +34,7 @@ local function on_attach(client, bufnr)
   vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts) -- Show diagnostic info
 
   -- Example: Disable formatting if the server has its own formatting capabilities
-  if client.name == "tsserver" or client.name == "jsonls" then
+  if client.name == "ts_ls" or client.name == "tsserver" or client.name == "jsonls" or client.name == "eslint" then
     client.server_capabilities.documentFormattingProvider = false
   end
 end
@@ -91,6 +97,42 @@ lspconfig.lua_ls.setup({
 -- Python LSP setuo
 lspconfig.pyright.setup {}
 
+-- JavaScript and TypeScript LSP setup
+lspconfig.ts_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+  },
+  root_dir = util.root_pattern({ ".git", "package.json", "tsconfig.json", "jsconfig.json" }),
+  single_file_support = true,
+}
+
+-- ESLint LSP setup
+lspconfig.eslint.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = util.root_pattern({
+    ".git",
+    ".eslintrc",
+    ".eslintrc.js",
+    ".eslintrc.cjs",
+    ".eslintrc.json",
+    "eslint.config.js",
+    "eslint.config.mjs",
+    "eslint.config.cjs",
+    "package.json",
+  }),
+  settings = {
+    workingDirectory = { mode = "auto" },
+  },
+}
+
 -- Ruby LSP setup using solargraph
 lspconfig.solargraph.setup {
   on_attach = on_attach,
@@ -121,13 +163,78 @@ lspconfig.solargraph.setup {
 --   root_dir = util.root_pattern({ ".git", "Gemfile", "sorbet/config" }),
 -- }
 
+-- Java LSP setup
+lspconfig.jdtls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = jdtls_cmd,
+  filetypes = { "java" },
+  root_dir = util.root_pattern({ ".git", "pom.xml", "build.gradle", "build.gradle.kts", "mvnw", "gradlew" }),
+  settings = {
+    java = {
+      signatureHelp = { enabled = true },
+      contentProvider = { preferred = "fernflower" },
+      completion = {
+        favoriteStaticMembers = {
+          "org.junit.Assert.*",
+          "org.junit.Assume.*",
+          "org.junit.jupiter.api.Assertions.*",
+          "org.junit.jupiter.api.Assumptions.*",
+          "org.junit.jupiter.api.DynamicContainer.*",
+          "org.junit.jupiter.api.DynamicTest.*",
+          "org.mockito.Mockito.*",
+          "org.mockito.ArgumentMatchers.*",
+          "org.mockito.Answers.*"
+        },
+        filteredTypes = {
+          "com.sun.*",
+          "io.micrometer.shaded.*",
+          "java.awt.*",
+          "jdk.*",
+          "sun.*",
+        },
+      },
+      sources = {
+        organizeImports = {
+          starThreshold = 9999,
+          staticStarThreshold = 9999,
+        },
+      },
+      codeGeneration = {
+        toString = {
+          template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
+        },
+        useBlocks = true,
+      },
+      configuration = {
+        runtimes = {
+          -- Add your Java runtime configurations here if needed
+          -- Example:
+          -- {
+          --   name = "JavaSE-11",
+          --   path = "/path/to/jdk-11",
+          -- },
+          -- {
+          --   name = "JavaSE-17",
+          --   path = "/path/to/jdk-17",
+          -- },
+        }
+      }
+    }
+  }
+}
+
 -- Auto-format on save
 vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.groovy lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.lua lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.py lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.js lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre *.jsx lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre *.ts lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre *.tsx lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.yaml lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre *.java lua vim.lsp.buf.format()]]
 -- Disable virtual_text since it's redundant due to lsp_lines.
 vim.diagnostic.config({
   virtual_text = true,
