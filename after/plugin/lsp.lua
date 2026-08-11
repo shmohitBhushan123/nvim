@@ -224,6 +224,65 @@ lspconfig.jdtls.setup {
   }
 }
 
+-- HTML LSP setup
+lspconfig.superhtml.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "superhtml", "lsp" },
+  filetypes = { "html" },
+  root_dir = util.root_pattern({ ".git" }),
+  single_file_support = true,
+}
+
+-- CSS LSP setup (also covers SCSS/LESS)
+lspconfig.cssls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "vscode-css-language-server", "--stdio" },
+  filetypes = { "css", "scss", "less" },
+  root_dir = util.root_pattern({ ".git", "package.json" }),
+  single_file_support = true,
+  init_options = { provideFormatter = true },
+  settings = {
+    -- Ignore unknown at-rules (e.g. Tailwind's @tailwind/@apply/@layer)
+    css = { lint = { unknownAtRules = "ignore" } },
+    scss = { lint = { unknownAtRules = "ignore" } },
+    less = { lint = { unknownAtRules = "ignore" } },
+  },
+}
+
+-- Tailwind CSS LSP setup
+lspconfig.tailwindcss.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "tailwindcss-language-server", "--stdio" },
+  root_dir = util.root_pattern({
+    "tailwind.config.js",
+    "tailwind.config.cjs",
+    "tailwind.config.mjs",
+    "tailwind.config.ts",
+    "postcss.config.js",
+    "postcss.config.cjs",
+    "postcss.config.mjs",
+    "postcss.config.ts",
+    ".git",
+  }),
+  settings = {
+    tailwindCSS = {
+      validate = true,
+      lint = {
+        cssConflict = "warning",
+        invalidApply = "error",
+        invalidScreen = "error",
+        invalidVariant = "error",
+        invalidConfigPath = "error",
+        invalidTailwindDirective = "error",
+        recommendedVariantOrder = "warning",
+      },
+    },
+  },
+}
+
 -- Auto-format on save
 vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.groovy lua vim.lsp.buf.format()]]
@@ -235,6 +294,8 @@ vim.cmd [[autocmd BufWritePre *.ts lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.tsx lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.yaml lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.java lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre *.html lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre *.css,*.scss,*.less lua vim.lsp.buf.format()]]
 -- Disable virtual_text since it's redundant due to lsp_lines.
 vim.diagnostic.config({
   virtual_text = true,
