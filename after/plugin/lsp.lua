@@ -94,8 +94,25 @@ lspconfig.lua_ls.setup({
 --   root_dir = util.root_pattern({ ".git", "build.gradle", "settings.gradle" }),
 -- }
 
--- Python LSP setuo
-lspconfig.pyright.setup {}
+-- Python LSP setup
+-- pyright: type-checking, hover, completion (formatting disabled; ruff handles that)
+lspconfig.pyright.setup {
+  on_attach = function(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+}
+
+-- ruff: linting + formatting (native Rust LSP, ships with the `ruff` CLI)
+lspconfig.ruff.setup {
+  on_attach = function(client, bufnr)
+    -- Let pyright own hover so we don't get duplicate/conflicting hovers
+    client.server_capabilities.hoverProvider = false
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+}
 
 -- JavaScript and TypeScript LSP setup
 lspconfig.ts_ls.setup {
