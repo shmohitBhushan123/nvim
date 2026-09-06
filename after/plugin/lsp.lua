@@ -241,6 +241,22 @@ lspconfig.jdtls.setup {
   }
 }
 
+-- C/C++ LSP setup
+lspconfig.clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "clangd", "--background-index", "--clang-tidy" },
+  filetypes = { "c", "cpp", "objc", "objcpp" },
+  root_dir = util.root_pattern({
+    ".git",
+    "compile_commands.json",
+    "compile_flags.txt",
+    "Makefile",
+    "CMakeLists.txt",
+  }),
+  single_file_support = true,
+}
+
 -- HTML LSP setup
 lspconfig.superhtml.setup {
   on_attach = on_attach,
@@ -313,6 +329,7 @@ vim.cmd [[autocmd BufWritePre *.yaml lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.java lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.html lua vim.lsp.buf.format()]]
 vim.cmd [[autocmd BufWritePre *.css,*.scss,*.less lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre *.c,*.h,*.cpp,*.hpp lua vim.lsp.buf.format()]]
 -- Disable virtual_text since it's redundant due to lsp_lines.
 vim.diagnostic.config({
   virtual_text = true,
